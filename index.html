@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+/* HEADER */
+header {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  opacity: 0.8;
+}
+
+/* PROJECTS */
+.projects {
+  padding: 40px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #1e293b;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+a {
+  color: #4facfe;
+  text-decoration: none;
+}
+
+/* CONTACT */
+.contact {
+  padding: 40px;
+  text-align: center;
+  background: #020617;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Egor</h1>
+  <p>Junior Frontend Developer</p>
+</header>
+
+<section class="projects">
+  <h2>Мои проекты</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Weather App</h3>
+      <p>Приложение погоды с API</p>
+      <a href="https://joker56745.github.io/API-weather/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="card">
+      <h3>Currency Converter</h3>
+      <p>Конвертер валют</p>
+      <a href="https://joker56745.github.io/exchange-rate/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="card">
+      <h3>Movie Search</h3>
+      <p>Поиск фильмов</p>
+      <a href="https://joker56745.github.io/movie-search-engine/" target="_blank">Открыть</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Контакты</h2>
+  <p>Email: karandawik0@gmail.com</p>
+  <p>GitHub: <a href="https://github.com/Joker56745" target="_blank">ссылка</a></p>
+</section>
+
+</body>
+</html>
