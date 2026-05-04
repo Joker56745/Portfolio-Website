@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Egor | Frontend Developer</title>
 
 <style>
 :root{
   --bg:#05060a;
+  --text:#eaeaea;
+  --muted:rgba(255,255,255,0.6);
   --card:rgba(255,255,255,0.06);
   --border:rgba(255,255,255,0.1);
   --accent:#7c5cff;
@@ -15,44 +17,52 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-  font-family:system-ui;
-  background:var(--bg);
-  color:white;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   overflow-x:hidden;
 }
 
-/* 🌈 GLOW */
-.glow{
+/* 🌫 premium background */
+.bg{
   position:fixed;
-  width:600px;height:600px;
-  background:radial-gradient(circle,var(--accent),transparent 60%);
-  filter:blur(120px);
-  opacity:.4;
-  top:-200px;left:-200px;
-  transition:0.2s;
-}
-.glow2{
-  position:fixed;
-  width:500px;height:500px;
-  background:radial-gradient(circle,var(--accent2),transparent 60%);
-  filter:blur(140px);
-  opacity:.25;
-  bottom:-200px;right:-200px;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124,92,255,0.25), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0,255,157,0.15), transparent 40%);
+  filter: blur(60px);
+  z-index:-1;
 }
 
 /* NAV */
 nav{
   position:fixed;
-  top:0;width:100%;
+  top:0;
+  width:100%;
+  padding:18px 6%;
   display:flex;
   justify-content:space-between;
-  padding:18px 6%;
-  backdrop-filter:blur(20px);
-  background:rgba(0,0,0,.4);
+  align-items:center;
+  backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.35);
   border-bottom:1px solid var(--border);
-  z-index:100;
 }
+
+.logo{
+  font-weight:600;
+  letter-spacing:0.5px;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+  transition:0.2s;
+}
+
+nav a:hover{color:white;}
 
 /* HERO */
 .hero{
@@ -65,7 +75,8 @@ nav{
 }
 
 .hero h1{
-  font-size:4rem;
+  font-size:4.5rem;
+  letter-spacing:-2px;
 }
 
 .hero span{
@@ -74,20 +85,32 @@ nav{
   -webkit-text-fill-color:transparent;
 }
 
+.hero p{
+  margin-top:15px;
+  color:var(--muted);
+  max-width:600px;
+  margin-inline:auto;
+  font-size:1.1rem;
+}
+
 /* BUTTONS */
+.btns{
+  margin-top:30px;
+}
+
 .btn{
   display:inline-block;
   padding:12px 18px;
-  margin:6px;
   border-radius:12px;
+  margin:6px;
   text-decoration:none;
-  transition:.25s;
+  transition:0.2s;
+  font-weight:500;
 }
 
 .primary{
   background:linear-gradient(90deg,var(--accent),var(--accent2));
   color:black;
-  font-weight:600;
 }
 
 .secondary{
@@ -96,137 +119,123 @@ nav{
 }
 
 .btn:hover{
-  transform:translateY(-4px);
+  transform:translateY(-3px);
 }
 
 /* SECTIONS */
 section{
-  padding:90px 8%;
+  padding:100px 8%;
 }
 
-/* CARDS */
+/* SECTION TITLE */
+h2{
+  font-size:2rem;
+  margin-bottom:30px;
+  letter-spacing:-0.5px;
+}
+
+/* CARD */
 .card{
+  max-width:800px;
+  margin:auto;
+  padding:30px;
+  border-radius:16px;
   background:var(--card);
   border:1px solid var(--border);
   backdrop-filter:blur(20px);
-  border-radius:18px;
-  padding:30px;
-  max-width:800px;
-  margin:auto;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
+  color:var(--muted);
+  line-height:1.7;
 }
 
 /* PROJECTS */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 .project{
+  padding:24px;
+  border-radius:16px;
   background:var(--card);
   border:1px solid var(--border);
-  padding:22px;
-  border-radius:16px;
   text-decoration:none;
   color:white;
-  transition:.3s;
-  opacity:0;
-  transform:translateY(40px);
+  transition:0.25s;
 }
 
 .project:hover{
-  transform:translateY(-10px) scale(1.02);
-  border-color:rgba(124,92,255,.5);
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  transform:translateY(-8px);
+  border-color:rgba(124,92,255,0.5);
 }
 
-/* SHOW CLASS (scroll animation) */
-.show{
-  opacity:1 !important;
-  transform:translateY(0) !important;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px;
+  color:var(--muted);
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow" id="glow"></div>
-<div class="glow2"></div>
+<div class="bg"></div>
 
 <nav>
-  <div><b>Egor.dev</b></div>
+  <div class="logo">Egor.dev</div>
   <div>
-    <a href="#projects" style="color:white;margin-right:20px;text-decoration:none;">Projects</a>
-    <a href="#about" style="color:white;text-decoration:none;">About</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
   </div>
 </nav>
 
 <section class="hero">
   <div>
-    <h1>Hi, I'm <span>Egor</span></h1>
-    <p>Frontend Developer • UI/UX • React in progress</p>
+    <h1>Egor <span>Frontend</span></h1>
+    <p>
+      I build clean, modern and high-performance web interfaces with focus on UX, design systems and real-world products.
+    </p>
 
-    <div>
-      <a class="btn primary" href="#projects">View Work</a>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View Projects</a>
       <a class="btn secondary" href="https://github.com/">GitHub</a>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <div class="card reveal">
-    <h2>About me</h2>
-    <p>
-      I build modern web apps with focus on UI, animations and performance.
-      I enjoy turning ideas into clean, interactive experiences.
-    </p>
+  <h2>About</h2>
+  <div class="card">
+    I’m a frontend developer focused on building real product-level interfaces.
+    I care about UI quality, spacing, typography and performance more than flashy effects.
+    Currently improving React and working on real-world projects.
   </div>
 </section>
 
 <section id="projects">
+  <h2>Projects</h2>
+
   <div class="grid">
 
-    <a class="project reveal" href="https://joker56745.github.io/movie-search-engine/">
-      🎬 Movie Search
+    <a class="project" href="https://joker56745.github.io/movie-search-engine/">
+      Movie Search Engine
     </a>
 
-    <a class="project reveal" href="https://joker56745.github.io/API-weather/">
-      🌦 Weather App
+    <a class="project" href="https://joker56745.github.io/API-weather/">
+      Weather App
     </a>
 
-    <a class="project reveal" href="https://joker56745.github.io/exchange-rate/">
-      💱 Currency Converter
+    <a class="project" href="https://joker56745.github.io/exchange-rate/">
+      Currency Converter
     </a>
 
   </div>
 </section>
 
-<script>
-/* 🌊 SCROLL REVEAL */
-const items = document.querySelectorAll('.reveal, .project');
-
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
-  });
-},{threshold:0.15});
-
-items.forEach(el=>observer.observe(el));
-
-/* 🖱 PARALLAX GLOW */
-document.addEventListener("mousemove",(e)=>{
-  const x = (e.clientX / window.innerWidth - 0.5) * 40;
-  const y = (e.clientY / window.innerHeight - 0.5) * 40;
-
-  document.getElementById("glow").style.transform =
-    `translate(${x}px,${y}px)`;
-});
-</script>
+<footer>
+  © 2026 Egor. Built with focus on simplicity & design quality.
+</footer>
 
 </body>
 </html>
