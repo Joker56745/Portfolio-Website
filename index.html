@@ -1,54 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Egor Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Egor Portfolio</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: #050814;
+  overflow-x: hidden;
+}
+
+/* background glow */
+.bg {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #4f46e5, transparent 60%);
+  top: -200px;
+  left: -200px;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+/* layout */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.links a {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.links a:hover {
+  opacity: 1;
+}
+
+/* hero */
+.hero {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hero h1 {
+  font-size: 60px;
+  margin: 10px 0;
+}
+
+.hero span {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  opacity: 0.7;
+}
+
+/* buttons */
+.buttons a {
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin: 5px;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.secondary {
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* card */
+.card {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 60px;
+}
+
+/* projects */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.project {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  background: rgba(79,70,229,0.2);
+}
+</style>
+
 </head>
 
 <body>
-  <div class="container">
 
-    <header class="hero">
-      <div class="badge">Frontend Developer</div>
-      <h1>Egor</h1>
-      <p>I build modern and clean web apps</p>
+<div class="bg"></div>
 
-      <div class="buttons">
-        <a href="https://github.com/" target="_blank">GitHub</a>
-        <a href="https://t.me/" target="_blank" class="secondary">Telegram</a>
-      </div>
-    </header>
+<div class="container">
 
-    <section class="card">
-      <h2>About me</h2>
-      <p>
-        I’m a frontend developer focused on building fast, responsive and
-        beautiful web interfaces using HTML, CSS and JavaScript.
-      </p>
-    </section>
+  <nav class="nav">
+    <div><b>Egor.dev</b></div>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/">GitHub</a>
+    </div>
+  </nav>
 
-    <section>
-      <h2>Projects</h2>
+  <section class="hero">
+    <h1>Egor <span>Frontend Developer</span></h1>
+    <p>I build modern and clean web apps</p>
 
-      <div class="grid">
+    <div class="buttons">
+      <a class="primary" href="https://github.com/">GitHub</a>
+      <a class="secondary" href="https://t.me/">Telegram</a>
+    </div>
+  </section>
 
-        <a class="project" href="https://joker56745.github.io/movie-search-engine/" target="_blank">
-          Movie Search
-        </a>
+  <section class="card" id="about">
+    <h2>About me</h2>
+    <p>I’m a frontend developer focused on clean UI, animations and modern web apps.</p>
+  </section>
 
-        <a class="project" href="https://joker56745.github.io/API-weather/" target="_blank">
-          Weather App
-        </a>
+  <section id="projects">
+    <h2>Projects</h2>
 
-        <a class="project" href="https://joker56745.github.io/exchange-rate/" target="_blank">
-          Currency Converter
-        </a>
+    <div class="grid">
 
-      </div>
-    </section>
+      <a class="project" href="https://joker56745.github.io/movie-search-engine/">
+        Movie Search
+      </a>
 
-  </div>
+      <a class="project" href="https://joker56745.github.io/API-weather/">
+        Weather App
+      </a>
+
+      <a class="project" href="https://joker56745.github.io/exchange-rate/">
+        Currency Converter
+      </a>
+
+    </div>
+  </section>
+
+</div>
+
 </body>
 </html>
