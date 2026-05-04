@@ -1,183 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Egor Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1e293b, #0f172a);
   color: white;
-  background: #050814;
-  overflow-x: hidden;
 }
 
-/* background glow */
-.bg {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #4f46e5, transparent 60%);
-  top: -200px;
-  left: -200px;
-  filter: blur(80px);
-  opacity: 0.6;
-}
-
-/* layout */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 30px;
-}
-
-/* nav */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 80px;
-}
-
-.links a {
-  margin-left: 15px;
-  color: white;
-  text-decoration: none;
-  opacity: 0.7;
-}
-
-.links a:hover {
-  opacity: 1;
-}
-
-/* hero */
-.hero {
+/* HEADER */
+header {
+  padding: 70px 20px;
   text-align: center;
-  margin-bottom: 80px;
+  background: linear-gradient(135deg, #4facfe, #7c3aed);
 }
 
-.hero h1 {
-  font-size: 60px;
-  margin: 10px 0;
+header h1 {
+  margin: 0;
+  font-size: 48px;
 }
 
-.hero span {
-  background: linear-gradient(90deg, #60a5fa, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+header p {
+  opacity: 0.85;
+  font-size: 18px;
 }
 
-.hero p {
-  opacity: 0.7;
+/* SECTION TITLE */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* buttons */
-.buttons a {
-  padding: 12px 18px;
-  border-radius: 12px;
-  text-decoration: none;
-  margin: 5px;
-  display: inline-block;
-  transition: 0.2s;
+/* PROJECTS */
+.projects {
+  padding: 50px 20px;
 }
 
-.primary {
-  background: #4f46e5;
-  color: white;
-}
-
-.secondary {
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-}
-
-/* card */
-.card {
-  padding: 25px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 60px;
-}
-
-/* projects */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.project {
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  width: 260px;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.project:hover {
-  transform: translateY(-8px);
-  background: rgba(79,70,229,0.2);
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(124,58,237,0.6);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  opacity: 0.8;
+}
+
+/* LINKS */
+a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #a78bfa;
+}
+
+/* CONTACT */
+.contact {
+  padding: 60px 20px;
+  text-align: center;
+  background: #020617;
+}
+
+.contact a {
+  color: #60a5fa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 34px;
+  }
+
+  .card {
+    width: 90%;
+  }
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="bg"></div>
+<header>
+  <h1>Egor</h1>
+  <p>Frontend Developer • HTML • CSS • JavaScript</p>
+</header>
 
-<div class="container">
+<section class="projects">
+  <h2>Мои проекты</h2>
 
-  <nav class="nav">
-    <div><b>Egor.dev</b></div>
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="https://github.com/">GitHub</a>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Weather App</h3>
+      <p>Приложение погоды с API и красивым UI</p>
+      <a href="https://joker56745.github.io/API-weather/" target="_blank">Открыть →</a>
     </div>
-  </nav>
 
-  <section class="hero">
-    <h1>Egor <span>Frontend Developer</span></h1>
-    <p>I build modern and clean web apps</p>
-
-    <div class="buttons">
-      <a class="primary" href="https://github.com/">GitHub</a>
-      <a class="secondary" href="https://t.me/">Telegram</a>
+    <div class="card">
+      <h3>Currency Converter</h3>
+      <p>Конвертация валют в реальном времени</p>
+      <a href="https://joker56745.github.io/exchange-rate/" target="_blank">Открыть →</a>
     </div>
-  </section>
 
-  <section class="card" id="about">
-    <h2>About me</h2>
-    <p>I’m a frontend developer focused on clean UI, animations and modern web apps.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="grid">
-
-      <a class="project" href="https://joker56745.github.io/movie-search-engine/">
-        Movie Search
-      </a>
-
-      <a class="project" href="https://joker56745.github.io/API-weather/">
-        Weather App
-      </a>
-
-      <a class="project" href="https://joker56745.github.io/exchange-rate/">
-        Currency Converter
-      </a>
-
+    <div class="card">
+      <h3>Movie Search</h3>
+      <p>Поиск фильмов через API</p>
+      <a href="https://joker56745.github.io/movie-search-engine/" target="_blank">Открыть →</a>
     </div>
-  </section>
 
-</div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Контакты</h2>
+  <p>Email: Karandawik0@gmail.com</p>
+  <p>
+    GitHub: <a href="https://github.com/https://github.com/Joker56745" target="_blank">профиль</a>
+  </p>
+</section>
 
 </body>
 </html>
