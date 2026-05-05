@@ -1,247 +1,313 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Egor | Frontend Developer</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 <style>
-    :root {
-      --bg: #0a0a0f;
-      --card: #111118;
-      --accent: #7c5cff;
-      --accent2: #00ff9d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: #e0e0ff;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+:root {
+  --bg: #05060a;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.1);
+  --accent: #7c5cff;
+  --accent2: #00ff9d;
+}
 
-    /* Background */
-    .background {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(124,92,255,0.15), transparent 50%),
-                  radial-gradient(circle at 70% 80%, rgba(0,255,157,0.12), transparent 50%);
-      z-index: -1;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(20px);
-      background: rgba(10,10,15,0.85);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
-    .hero-content h1 {
-      font-size: 5rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero-content span {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-content p {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      opacity: 0.85;
-    }
+/* 🌈 BACKGROUND GLOW */
+.glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent), transparent 60%);
+  top: -200px;
+  left: -200px;
+  filter: blur(100px);
+  opacity: 0.4;
+  z-index: 0;
+}
 
-    .btn {
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.4s ease;
-    }
-    .primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: black;
-    }
-    .secondary {
-      border: 2px solid rgba(255,255,255,0.3);
-      color: white;
-    }
-    .btn:hover {
-      transform: translateY(-6px) scale(1.05);
-    }
+.glow2 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent2), transparent 60%);
+  bottom: -200px;
+  right: -200px;
+  filter: blur(120px);
+  opacity: 0.25;
+  z-index: 0;
+}
 
-    section {
-      padding: 120px 8%;
-    }
-    h2 {
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 70px;
-    }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
 
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-    }
-    .project-card {
-      background: var(--card);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .project-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 30px 60px rgba(124,92,255,0.25);
-    }
-    .project-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-info {
-      padding: 24px;
-    }
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
-    .skill-item {
-      background: var(--card);
-      padding: 25px 15px;
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-    .skill-item:hover {
-      transform: scale(1.08);
-      background: rgba(124,92,255,0.15);
-    }
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s;
+}
 
-    footer {
-      text-align: center;
-      padding: 80px 20px;
-      opacity: 0.6;
-    }
+.nav-links a:hover {
+  color: white;
+}
 
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 3.2rem; }
-    }
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  letter-spacing: -1px;
+}
+
+.hero span {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin-top: 15px;
+  opacity: 0.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BUTTONS */
+.btns {
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin: 6px;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: black;
+  font-weight: 600;
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* SECTIONS */
+section {
+  padding: 90px 8%;
+  position: relative;
+  z-index: 1;
+}
+
+h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ABOUT CARD */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+}
+
+/* PROJECTS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  transition: 0.3s ease;
+  backdrop-filter: blur(20px);
+  text-decoration: none;
+  color: white;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124,92,255,0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.5;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<div class="background"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
 
 <nav>
   <div class="logo">Egor.dev</div>
-  <div>
-    <a href="#about" style="margin:0 18px; color:#ddd; text-decoration:none;">About</a>
-    <a href="#projects" style="margin:0 18px; color:#ddd; text-decoration:none;">Projects</a>
-    <a href="#skills" style="margin:0 18px; color:#ddd; text-decoration:none;">Skills</a>
-    <a href="#contact" style="margin:0 18px; color:#ddd; text-decoration:none;">Contact</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-content">
+  <div>
     <h1>Hi, I'm <span>Egor</span></h1>
-    <p>Frontend Developer turning ideas into smooth, beautiful digital experiences.</p>
-    <div>
-      <a href="#projects" class="btn primary">See My Work</a>
-      <a href="https://github.com/Joker56745" target="_blank" class="btn secondary">GitHub</a>
+    <p>Frontend Developer focused on building clean, fast and modern web experiences.</p>
+
+    <div class="btns">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn secondary" href="https://github.com/Joker56745" target="_blank">GitHub</a>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <h2>About Me</h2>
-  <div style="max-width: 800px; margin: auto; text-align: center; font-size: 1.2rem; opacity: 0.9;">
-    <p>I am a frontend developer with a focus on clean code, modern design, and excellent user experience.</p>
-    <p>I prefer to create interfaces that not only look good, but also work well.</p>
+  <h2>About</h2>
+  <div class="card">
+    I’m a frontend developer focused on UI/UX and modern web apps.  
+    I build responsive, fast and clean interfaces using HTML, CSS and JavaScript.  
+    Currently improving React and animation skills.
   </div>
 </section>
 
 <section id="projects">
-  <h2>Featured Projects</h2>
-  <div class="projects-grid">
-    <a href="https://joker56745.github.io/movie-search-engine/" target="_blank" class="project-card">
-      <img src="https://picsum.photos/id/1015/600/300" alt="Movie Search">
-      <div class="project-info">
-        <h3>🎬 Movie Search Engine</h3>
-        <p>Search for movies with descriptions and trailers.</p>
-        <small>OMDb API • JavaScript • Responsive</small>
-      </div>
-    </a>
+  <h2>Projects</h2>
 
-    <a href="https://joker56745.github.io/crypto/" target="_blank" class="project-card">
-      <img src="https://picsum.photos/id/201/600/300" alt="Crypto">
-      <div class="project-info">
-        <h3>₿ Crypto Tracker</h3>
-        <p>Cryptocurrency monitoring with charts.</p>
-        <small>CoinGecko API • Chart.js</small>
-      </div>
-    </a>
+  <div class="grid">
 
-    <a href="https://joker56745.github.io/API-weather/" target="_blank" class="project-card">
-      <img src="https://picsum.photos/id/1016/600/300" alt="Weather">
-      <div class="project-info">
-        <h3>🌤 Weather Application</h3>
-        <p>Real-time weather forecast.</p>
-        <small>Open-Meteo API</small>
-      </div>
-    </a>
+    <div class="project">
+      <h3>🪙 CryptoPulse</h3>
+      <p>A cryptocurrency tracker with real prices, interactive charts, and filters.</p>
+      <small>JavaScript • Chart.js • CoinGecko API • Responsive</small><br><br>
+      <a href="https://joker56745.github.io/Crypto-Dashboard-/" target="_blank">Live →</a>
+    </div>
+
+    <div class="project">
+      <h3>🎬 Movie Search</h3>
+      <p>Search movies, view ratings, plot and trailers using API.</p>
+      <small>JavaScript • API • UI</small><br><br>
+      <a href="https://joker56745.github.io/movie-search-engine/" target="_blank">Live →</a>
+    </div>
+
+    <div class="project">
+      <h3>🌦 Weather App</h3>
+      <p>Real-time weather app with city search and clean UI.</p>
+      <small>JavaScript • API</small><br><br>
+      <a href="https://joker56745.github.io/API-weather/" target="_blank">Live →</a>
+    </div>
+
+    <div class="project">
+      <h3>💱 Currency Converter</h3>
+      <p>Convert currencies using live exchange rates.</p>
+      <small>JavaScript • API</small><br><br>
+      <a href="https://joker56745.github.io/exchange-rate/" target="_blank">Live →</a>
+    </div>
+
+  <div class="project">
+    <h3>🧠 Memory Game</h3>
+    <p>Classic memory matching game built with JavaScript logic and DOM manipulation.</p>
+    <small>JavaScript • Game Logic • DOM</small><br><br>
+    <a class="btn" href="https://joker56745.github.io/Memory-game-/" target="_blank">Live →</a>
+  </div>
+
   </div>
 </section>
 
-<section id="skills">
-  <h2>Skills & Technologies</h2>
-  <div class="skills-grid">
-    <div class="skill-item">HTML5 / CSS3</div>
-    <div class="skill-item">JavaScript (ES6+)</div>
-    <div class="skill-item">React Basics</div>
-    <div class="skill-item">API Integration</div>
-    <div class="skill-item">Responsive Design</div>
-    <div class="skill-item">Git & GitHub</div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Get In Touch</h2>
-  <p style="text-align:center; font-size:1.4rem;">
-    Email: <strong>Karandawik0@gmail.com</strong><br><br>
-    Telegram: <strong>@Nazgul_088</strong>
-  </p>
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Email: Karandawik0@gmail.com</p>
+  <p>Telegram: @Nazgul_088</p>
 </section>
 
 <footer>
-  © 2026 Egor • Frontend Developer
+  © 2026 Egor. All rights reserved.
 </footer>
 
 </body>
